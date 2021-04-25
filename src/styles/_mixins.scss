@@ -1,0 +1,17 @@
+$mediaBreakpoints: (
+    mobile: 23.4375rem,
+    tablet: 48rem,
+    desktop-sm: 64rem
+);
+
+@mixin flex-sb-c {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin media-query($size) {
+    @media screen and (min-width: map-get($mediaBreakpoints, $size)) {
+        @content;
+    }
+}

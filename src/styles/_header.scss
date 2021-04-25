@@ -1,0 +1,112 @@
+.header {
+    height: 18.75rem;
+    background: url("../images/image-hero-mobile.jpg") top center no-repeat;
+    background-size: cover;
+    padding: 2rem 1.5rem;
+
+    @include media-query(tablet) {
+        background-image: url("../images/image-hero-desktop.jpg");
+    }
+}
+
+.nav {
+    @include flex-sb-c;
+    position: relative;
+    z-index: 999;
+    width: Min(1100px, 100%);
+    margin: 0 auto;
+    $self: &;
+
+    &--open {
+        #{ $self }__bar--first {
+            transform: rotate(45deg);
+        }
+
+        #{ $self }__bar--mid {
+            opacity: 0;
+        }
+
+        #{ $self }__bar--last {
+            transform: rotate(-45deg);
+        }
+
+        #{ $self }__menu {
+            left: 0;
+        }
+    }
+
+    &__logo-link {
+        display: inline-block;
+    }
+
+    &__toggle {
+        cursor: pointer;
+
+        @include media-query(tablet) {
+            display: none;
+        }
+    }
+
+    &__bar {
+        display: block;
+        width: 1rem;
+        height: 3px;
+        background-color: $white;
+        border-radius: 1rem;
+        transition: .2s ease;
+
+        &:not(:last-child) {
+            margin-bottom: .1875rem;
+        }
+
+        &--first {
+            transform-origin: 1px 3px;
+        }
+
+        &--last {
+            transform-origin: 0 0;
+        }
+    }
+
+    &__menu {
+        list-style: none;
+        padding: 0;
+        position: absolute;
+        top: 45px;
+        left: -120%;
+        background: $white;
+        width: 100%;
+        border-radius: .5rem;
+        transition: .2s ease;
+
+        @include media-query(tablet) {
+            position: initial;
+            background: none;
+            transition: none;
+            display: flex;
+            width: initial;
+            margin: 0;
+        }
+    }
+
+    &__item {
+        font-family: $fontFamily;
+        padding: 1.5rem;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $darkGray;
+        }
+
+        @include media-query(tablet) {
+            font-size: .88rem;
+            padding: 0;
+            color: $white;
+            
+            &:not(:last-child) {
+                border-bottom: none;
+                padding-right: 2.5rem;
+            }
+        }
+    }
+}

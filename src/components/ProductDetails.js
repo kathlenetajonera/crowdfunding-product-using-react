@@ -4,9 +4,9 @@ import ProductList from "./ProductList";
 const ProductDetails = () => {
     return (
         <Container>
-            <h2 className="container__main-text">
+            <h3 className="container__main-text">
                 About this project
-            </h2>
+            </h3>
 
             <p className="container__body-text">
                 The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.

@@ -6,7 +6,7 @@
   padding: 2rem 1.5rem; }
   @media screen and (min-width: 48rem) {
     .header {
-      background-image: url("../images/image-hero-desktop.jpg"); } }
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.055)), url("../images/image-hero-desktop.jpg"); } }
 
 .nav {
   display: flex;
@@ -77,13 +77,6 @@
           border-bottom: none;
           padding-right: 2.5rem; } }
 
-.main {
-  background-color: #fafafa;
-  min-height: calc(100vh - 300px);
-  padding: 1.5rem; }
-  .main__inner {
-    transform: translateY(-100px); }
-
 .container {
   position: relative;
   background-color: white;
@@ -114,6 +107,9 @@
       margin: 0 0 -.8rem; }
     .container__main-text--card {
       margin: 0; }
+      @media screen and (min-width: 48rem) {
+        .container__main-text--card {
+          font-size: 1.1rem; } }
   .container__body-text {
     color: #7a7a7a;
     line-height: 1.6rem;
@@ -123,6 +119,9 @@
         font-size: 1rem; } }
     .container__body-text--centered {
       text-align: center; }
+      @media screen and (min-width: 48rem) {
+        .container__body-text--centered {
+          margin: 1rem 0 2rem; } }
     .container__body-text--pledge {
       color: #3cb4ac;
       font-weight: 500;
@@ -151,19 +150,21 @@
   font-family: "Commissioner", sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  padding: 1.1rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 2rem;
   cursor: pointer; }
   .button--primary {
     background-color: #3cb4ac;
     color: white;
     flex: 1; }
+    .button--primary:hover {
+      background-color: #147b74; }
     @media screen and (min-width: 48rem) {
       .button--primary {
         flex: none; } }
   .button--bookmark {
     background-color: whitesmoke;
-    padding: 1.1rem 2rem 1rem 5rem;
+    padding: 1.1rem 1.5rem 1rem 4.5rem;
     color: #7a7a7a; }
   .button--unavailable {
     background-color: #7a7a7a;
@@ -208,6 +209,12 @@ body {
       .bookmark__icon {
         position: absolute;
         margin-left: 0; } }
+  .bookmark:hover .bookmark__circle, .bookmark--active .bookmark__circle {
+    fill: #147b74; }
+  .bookmark:hover .bookmark__ribbon, .bookmark--active .bookmark__ribbon {
+    fill: white; }
+  .bookmark:hover .button, .bookmark--active .button {
+    color: #147b74; }
 
 .flex {
   display: flex; }

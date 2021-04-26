@@ -39,6 +39,10 @@
 
         &--card {
             margin: 0;
+
+            @include media-query(tablet) {
+                font-size: 1.1rem;
+            }
         }
     }
 
@@ -53,6 +57,10 @@
 
         &--centered {
             text-align: center;
+
+            @include media-query(tablet) {
+                margin: 1rem 0 2rem;
+            }
         }
 
         &--pledge {

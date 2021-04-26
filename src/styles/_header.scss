@@ -5,7 +5,7 @@
     padding: 2rem 1.5rem;
 
     @include media-query(tablet) {
-        background-image: url("../images/image-hero-desktop.jpg");
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.055)), url("../images/image-hero-desktop.jpg");
     }
 }
 

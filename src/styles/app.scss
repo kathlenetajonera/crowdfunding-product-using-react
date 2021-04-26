@@ -41,6 +41,7 @@ body {
 .bookmark {
     @include flex-sb-c;
     position: relative;
+    $self: &;
 
     &__icon {
         margin-left: .5rem;
@@ -49,6 +50,20 @@ body {
         @include media-query(tablet) {
             position: absolute;
             margin-left: 0;
+        }
+    }
+
+    &:hover, &--active {
+        #{ $self }__circle {
+            fill: $darkCyan;
+        }
+
+        #{ $self }__ribbon {
+            fill: $white;
+        }
+
+        & .button {
+            color: $darkCyan;
         }
     }
 }

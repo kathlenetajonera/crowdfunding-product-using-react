@@ -4,7 +4,7 @@
     font-family: $fontFamily;
     font-weight: 700;
     font-size: 1rem;
-    padding: 1.1rem 2rem;
+    padding: 1rem 2rem;
     border-radius: 2rem;
     cursor: pointer;
 
@@ -13,6 +13,10 @@
         color: $white;
         flex: 1;
 
+        &:hover {
+            background-color: $darkCyan;
+        }
+
         @include media-query(tablet) {
             flex: none;
         }
@@ -20,8 +24,12 @@
 
     &--bookmark {
         background-color: $bookmarkBg;
-        padding: 1.1rem 2rem 1rem 5rem;
+        padding: 1.1rem 1.5rem 1rem 4.5rem;
         color: $darkGray;
+
+        // &:hover {
+        //     color: $darkCyan;
+        // }
     }
 
     &--unavailable {

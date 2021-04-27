@@ -1,9 +1,13 @@
 import Button from "./Button";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const ProductCard = ({ productName, minPledge, productDesc, stocks }) => {
+const ProductCard = ({ productName, minPledge, productDesc, stocks, handleClick }) => {
+    console.log("card");
     return (
-        <div className={`container__card ${stocks === 0 ? 'container__card--unavailable' : ''}`}>
+        <div 
+            className={`container__card ${stocks === 0 ? 'container__card--unavailable' : ''}`}
+            data-product={productName}
+        >
             <FlexWrapper type="col-mb">
                 <p className="container__main-text container__main-text--card">
                     { productName }
@@ -31,6 +35,7 @@ const ProductCard = ({ productName, minPledge, productDesc, stocks }) => {
                 <Button 
                     type={`${stocks !== 0 ? 'primary' : 'unavailable'}`}
                     label={`${stocks !== 0 ? 'Select Reward' : 'Out of Stock'}`}
+                    handleClick={handleClick}
                 />
             </FlexWrapper>
         </div>

@@ -1,6 +1,8 @@
-const Button = ({ type, label }) => {
+const Button = ({ type, label, handleClick }) => {
+
+    console.log("button");
     return (
-        <button className={`button button--${type}`}>
+        <button className={`button button--${type}`} onClick={handleClick}>
             { label }
         </button>
     );

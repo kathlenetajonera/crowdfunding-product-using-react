@@ -4,7 +4,8 @@ import Button from "./Button";
 import Container from "./wrapper/Container";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const Product = () => {
+const Product = ({ setIsModalOpen }) => {
+    const handleOpen = () => setIsModalOpen(true);
     return (
         <Container>
             <img src={logo} alt="mastercraft" className="container__logo"/>
@@ -18,7 +19,11 @@ const Product = () => {
             </p>
 
             <FlexWrapper type="sb-c">
-                <Button type="primary" label="Back this project" />
+                <Button 
+                    type="primary" 
+                    label="Back this project"
+                    handleClick={handleOpen}
+                />
                 <BookmarkBtn />
             </FlexWrapper>
         </Container>

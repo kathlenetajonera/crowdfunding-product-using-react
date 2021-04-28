@@ -3,27 +3,28 @@ import React, { useState, useEffect } from "react";
 export const ProductSelectionContext = React.createContext();
 
 export const ProductSelectionProvider = ({ children }) => {
-    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [selectedReward, setSelectedReward] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const handleClick = (e) => {
-        const productName = e.target.closest(".container__card").dataset.product;
 
-        setSelectedProduct(productName)
+    const handleClick = (e) => {
+        const selectedProduct = e.target.closest(".container__card").dataset.reward;
+
+        setSelectedReward(selectedProduct)
     }
 
     useEffect(() => {
-        if (selectedProduct) setIsModalOpen(true);
-    }, [selectedProduct])
+        if (selectedReward) setIsModalOpen({ name: "product selection", isOpen: true });
+    }, [selectedReward])
 
     useEffect(() => {
-        !isModalOpen && setSelectedProduct(null);
+        !isModalOpen && setSelectedReward(null);
     }, [isModalOpen])
 
     return (
         <ProductSelectionContext.Provider 
             value={{
-                selectedProduct,
-                setSelectedProduct,
+                selectedReward,
+                setSelectedReward,
                 isModalOpen,
                 setIsModalOpen,
                 handleClick

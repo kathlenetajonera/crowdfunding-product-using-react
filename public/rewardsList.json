@@ -1,5 +1,12 @@
 [
     {
+        "id": 0,
+        "name": "Pledge with no reward",
+        "minPledge": null,
+        "description": "Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.",
+        "stocks": null
+    },
+    {
         "id": 1,
         "name": "Bamboo Stand",
         "minPledge": 25,

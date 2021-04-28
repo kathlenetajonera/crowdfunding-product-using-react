@@ -1,9 +1,10 @@
+import React from "react";
 import Container from "./wrapper/Container";
 import FlexWrapper from "./wrapper/FlexWrapper";
 import CrowdFundData from "./CrowdFundData";
 import ProgressBar from "./ProgressBar";
 
-const CrowdFundSummary = () => {
+const CrowdFundSummary = React.memo(() => {
     return (
         <Container>
             <FlexWrapper type="col-mb">
@@ -15,6 +16,6 @@ const CrowdFundSummary = () => {
             <ProgressBar />
         </Container>
     );
-}
+})
  
 export default CrowdFundSummary;

@@ -44,6 +44,10 @@
                 font-size: 1.1rem;
             }
         }
+
+        &--centered {
+            text-align: center;
+        }
     }
 
     &__body-text {
@@ -90,10 +94,21 @@
         margin: 2rem 0;
         border: 1px solid $darkGray;
         border-radius: .5rem;
+        position: relative;
 
         &--unavailable {
             pointer-events: none;
             opacity: .4;
         }
+
+        &--selected {
+            border-color: transparent;
+            box-shadow: 0 0 0 2px $moderateCyan;
+        }
+    }
+
+    &__img {
+        display: block;
+        margin: 0 auto;
     }
 }

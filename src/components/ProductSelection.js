@@ -1,12 +1,12 @@
-import { useContext, useMemo } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { useMemo } from "react";
+import useProducts from "../hooks/useProducts";
 import Overlay from "./Overlay";
 import ProductSelectionCard from "./ProductSelectionCard";
 import Container from "./wrapper/Container";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const ProductSelection = ({ selectedProduct, setSelectedProduct, setIsModalOpen }) => {
-    const products = useContext(ProductContext);
+const ProductSelection = ({ setIsModalOpen }) => {
+    const { products } = useProducts();
     const productSelectionCards = useMemo(() => (
         products && products.map(product => (
             <ProductSelectionCard 
@@ -14,12 +14,10 @@ const ProductSelection = ({ selectedProduct, setSelectedProduct, setIsModalOpen 
                 minPledge={product.minPledge}
                 productDesc={product.description}
                 stocks={product.stocks}
-                selectedProduct={selectedProduct}
-                setSelectedProduct={setSelectedProduct}
                 key={product.id}
             />
         ))
-    ), [products, selectedProduct, setSelectedProduct]);
+    ), [products]);
 
     const handleClose = () => setIsModalOpen(false);
 

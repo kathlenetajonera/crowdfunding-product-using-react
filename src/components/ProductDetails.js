@@ -1,7 +1,8 @@
+import React from "react";
 import Container from "./wrapper/Container";
 import ProductList from "./ProductList";
 
-const ProductDetails = () => {
+const ProductDetails = React.memo(() => {
     return (
         <Container>
             <h3 className="container__main-text">
@@ -17,6 +18,6 @@ const ProductDetails = () => {
             <ProductList />
         </Container>
     );
-}
+});
  
 export default ProductDetails;

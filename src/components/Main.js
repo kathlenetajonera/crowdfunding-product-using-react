@@ -5,9 +5,10 @@ import Product from "./Product";
 import ProductDetails from "./ProductDetails";
 import Modal from "./wrapper/Modal";
 import ProductSelection from "./ProductSelection";
+import CompletedPledge from "./CompletedPledge";
 
 const Main = () => {
-    const { selectedProduct, setSelectedProduct, isModalOpen, setIsModalOpen } = useContext(ProductSelectionContext);
+    const { isModalOpen, setIsModalOpen } = useContext(ProductSelectionContext);
 
     return (
         <div className="main">
@@ -19,17 +20,21 @@ const Main = () => {
                 <ProductDetails />
             </div>
 
-            { isModalOpen &&
+            { isModalOpen.name === "product selection" &&
                 <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
                     <ProductSelection 
-                        selectedProduct={selectedProduct} 
-                        setSelectedProduct={setSelectedProduct}
                         setIsModalOpen={setIsModalOpen}
                     />
                 </Modal>
             }
+
+            { isModalOpen.name === "completed" &&
+                <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+                    <CompletedPledge />
+                </Modal>
+            }
         </div>
     );
-}
+};
  
 export default Main;

@@ -1,8 +1,9 @@
 .modal {
     position: absolute;
-    top: Max(43rem, 50%);
+    // top: Max(43rem, 50%);
+    top: 8rem;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: Min(720px, 90%);
     z-index: 999;
 }

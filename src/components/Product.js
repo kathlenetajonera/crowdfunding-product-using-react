@@ -5,7 +5,7 @@ import Container from "./wrapper/Container";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
 const Product = ({ setIsModalOpen }) => {
-    const handleOpen = () => setIsModalOpen(true);
+    const handleOpen = () => setIsModalOpen({ name: "product selection", isOpen: true });
     return (
         <Container>
             <img src={logo} alt="mastercraft" className="container__logo"/>

@@ -1,12 +1,15 @@
+import { useContext } from "react";
+import { ProductSelectionContext } from "../context/ProductSelectionContext";
 import Button from "./Button";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const ProductCard = ({ productName, minPledge, productDesc, stocks, handleClick }) => {
-    console.log("card");
+const ProductCard = ({ productName, minPledge, productDesc, stocks }) => {
+    const { handleClick } = useContext(ProductSelectionContext);
+
     return (
         <div 
             className={`container__card ${stocks === 0 ? 'container__card--unavailable' : ''}`}
-            data-product={productName}
+            data-reward={productName}
         >
             <FlexWrapper type="col-mb">
                 <p className="container__main-text container__main-text--card">

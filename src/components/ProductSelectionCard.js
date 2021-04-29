@@ -1,28 +1,34 @@
 import React, { useContext } from "react";
+import { FundingSummaryContext } from "../context/FundingSummaryContext";
 import { ProductSelectionContext } from "../context/ProductSelectionContext";
 import Button from "./Button";
 import PledgeInput from "./PledgeInput";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
 const ProductSelectionCard = ({ productName, minPledge, productDesc, stocks }) => {
-    const { selectedReward, handleClick } = useContext(ProductSelectionContext);
-
-    console.log("selection card");
+    const { selectedReward, setIsModalOpen, handleClick } = useContext(ProductSelectionContext);
+    const { setTotalBackers } = useContext(FundingSummaryContext);
+    const handleSubmit = () => {
+        setTotalBackers(current => current + 1);
+        setIsModalOpen({ name: "completed", isOpen: true });
+    };
+    const isUnavailable = stocks === 0;
+    const isSelected = productName === selectedReward; 
 
     return (
         <div 
-            className={`container__card ${ 
-                stocks === 0 
-                ? 'container__card--unavailable' 
-                : productName === selectedReward 
-                ? 'container__card--selected'
+            className={`container__card ${
+                isUnavailable 
+                ? 'container__card--unavailable'
+                : isSelected
+                ?  'container__card--selected'
                 : ''
             }`} 
             data-reward={productName}
             onClick={handleClick}
         >
             <FlexWrapper type="ac">
-                <div className={`radio__custom ${selectedReward === productName ? 'radio__custom--active' : ''}`} />
+                <div className={`radio__custom ${isSelected ? 'radio__custom--active' : ''}`} />
                 
                 <FlexWrapper type="col-mb">
                     <p className="container__main-text container__main-text--card">
@@ -44,23 +50,31 @@ const ProductSelectionCard = ({ productName, minPledge, productDesc, stocks }) =
             }
 
             { stocks !== null && 
-                <FlexWrapper type="ac">
-                    <h1 className="container__main-text container__main-text--card">
-                        { stocks }
-                    </h1>
+                <div className="stocks">
+                    <FlexWrapper type="ac">
+                        <h3 className="container__main-text">
+                            { stocks }
+                        </h3>
 
-                    <p className="container__body-text container__body-text--left">
-                        left
-                    </p>
-                </FlexWrapper>
+                        <p className="container__body-text container__body-text--left">
+                            left
+                        </p>
+                    </FlexWrapper>
+                </div>
             }
             
-            { selectedReward === productName && selectedReward !== "Pledge with no reward" &&
+            { isSelected && selectedReward !== "Pledge with no reward" &&
                 <PledgeInput minPledge={minPledge} /> 
             }
 
-            { selectedReward === productName && selectedReward === "Pledge with no reward" &&
-                <Button type="primary-no-flex" label="Continue" /> 
+            { isSelected && selectedReward === "Pledge with no reward" &&
+                <div className="pledge">
+                    <Button 
+                        type="primary-margin-top" 
+                        label="Continue"
+                        handleClick={handleSubmit}
+                    /> 
+                </div>
             }
 
         </div>

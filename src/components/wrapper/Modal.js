@@ -1,13 +1,14 @@
 import ReactDOM from "react-dom";
 import Overlay from "../Overlay";
 
-const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
+const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
+
     return ReactDOM.createPortal(
         <>
-        <div className="modal">
+        <div className={`modal`}>
             { children }
         </div>
-        <Overlay isActive={isModalOpen} setIsActive={setIsModalOpen} />
+        <Overlay type="normal" isActive={isModalOpen} setIsActive={setIsModalOpen} />
         </>,
         document.querySelector("#modal-root")
     );

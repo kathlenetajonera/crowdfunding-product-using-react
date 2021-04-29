@@ -4,16 +4,18 @@ import FlexWrapper from "./wrapper/FlexWrapper";
 import CrowdFundData from "./CrowdFundData";
 import ProgressBar from "./ProgressBar";
 
-const CrowdFundSummary = React.memo(() => {
+const CrowdFundSummary = React.memo(({ totalPledge, totalBackers }) => {
+    const numberFormat = new Intl.NumberFormat("en");
+
     return (
         <Container>
             <FlexWrapper type="col-mb">
-                <CrowdFundData data="$89,914" description="of $100,000 backed" />
-                <CrowdFundData data="5,007" description="total backers" />
+                <CrowdFundData data={`$${numberFormat.format(totalPledge)}`} description="of $100,000 backed" />
+                <CrowdFundData data={`${numberFormat.format(totalBackers)}`} description="total backers" />
                 <CrowdFundData data="56" description="days left" />
             </FlexWrapper>
 
-            <ProgressBar />
+            <ProgressBar totalPledge={totalPledge} />
         </Container>
     );
 })

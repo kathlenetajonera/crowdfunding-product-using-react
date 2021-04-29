@@ -6,9 +6,11 @@ import ProductDetails from "./ProductDetails";
 import Modal from "./wrapper/Modal";
 import ProductSelection from "./ProductSelection";
 import CompletedPledge from "./CompletedPledge";
+import { FundingSummaryContext } from "../context/FundingSummaryContext";
 
 const Main = () => {
-    const { isModalOpen, setIsModalOpen } = useContext(ProductSelectionContext);
+    const { selectedReward, isModalOpen, setIsModalOpen } = useContext(ProductSelectionContext);
+    const { totalPledge, totalBackers } = useContext(FundingSummaryContext);
 
     return (
         <div className="main">
@@ -16,13 +18,17 @@ const Main = () => {
                 <Product
                     setIsModalOpen={setIsModalOpen}
                 />
-                <CrowdFundingSummary />
+                <CrowdFundingSummary 
+                    totalPledge={totalPledge}
+                    totalBackers={totalBackers}
+                />
                 <ProductDetails />
             </div>
 
             { isModalOpen.name === "product selection" &&
-                <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+                <Modal selectedReward={selectedReward} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
                     <ProductSelection 
+                        selectedReward={selectedReward}
                         setIsModalOpen={setIsModalOpen}
                     />
                 </Modal>

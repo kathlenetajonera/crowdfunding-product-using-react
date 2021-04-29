@@ -42,6 +42,7 @@
 
             @include media-query(tablet) {
                 font-size: 1.1rem;
+                margin-right: 1rem;
             }
         }
 
@@ -59,12 +60,14 @@
             font-size: 1rem;
         }
 
-        &--centered {
-            text-align: center;
-
+        &--product-desc {
             @include media-query(tablet) {
                 margin: 1rem 0 2rem;
             }
+        }
+
+        &--centered {
+            text-align: center;
         }
 
         &--pledge {

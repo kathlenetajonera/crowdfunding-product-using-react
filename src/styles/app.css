@@ -109,7 +109,8 @@
       margin: 0; }
       @media screen and (min-width: 48rem) {
         .container__main-text--card {
-          font-size: 1.1rem; } }
+          font-size: 1.1rem;
+          margin-right: 1rem; } }
     .container__main-text--centered {
       text-align: center; }
   .container__body-text {
@@ -119,11 +120,11 @@
     @media screen and (min-width: 48rem) {
       .container__body-text {
         font-size: 1rem; } }
+    @media screen and (min-width: 48rem) {
+      .container__body-text--product-desc {
+        margin: 1rem 0 2rem; } }
     .container__body-text--centered {
       text-align: center; }
-      @media screen and (min-width: 48rem) {
-        .container__body-text--centered {
-          margin: 1rem 0 2rem; } }
     .container__body-text--pledge {
       color: #3cb4ac;
       font-weight: 500;
@@ -162,25 +163,24 @@
   padding: 1rem 2rem;
   border-radius: 2rem;
   cursor: pointer; }
-  .button--primary, .button--primary-no-flex, .button--primary-centered {
+  .button--primary, .button--primary-no-flex, .button--primary-centered, .button--primary-margin-top {
     background-color: #3cb4ac;
     color: white;
     flex: 1; }
-    .button--primary:hover, .button--primary-no-flex:hover, .button--primary-centered:hover {
+    .button--primary:hover, .button--primary-no-flex:hover, .button--primary-centered:hover, .button--primary-margin-top:hover {
       background-color: #147b74; }
     @media screen and (min-width: 48rem) {
-      .button--primary, .button--primary-no-flex, .button--primary-centered {
+      .button--primary, .button--primary-no-flex, .button--primary-centered, .button--primary-margin-top {
         flex: none; } }
-  .button--primary-no-flex {
+  .button--primary-no-flex, .button--primary-centered, .button--primary-margin-top {
     flex: none;
     padding: 1rem 1.5rem;
     margin-left: auto;
     display: block; }
   .button--primary-centered {
-    flex: none;
-    padding: 1rem 1.5rem;
-    display: block;
     margin: 0 auto; }
+  .button--primary-margin-top {
+    margin-top: 1rem; }
   .button--bookmark {
     background-color: whitesmoke;
     padding: 1.1rem 1.5rem 1rem 4.5rem;
@@ -213,9 +213,12 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(black 20%, white);
   opacity: .7;
   z-index: 1; }
+  .overlay--gradient {
+    background: linear-gradient(black 20%, white); }
+  .overlay--normal {
+    background-color: black; }
 
 .main {
   background-color: #fafafa;
@@ -297,7 +300,6 @@ body {
   .progress-bar__progress {
     position: absolute;
     background-color: #3cb4ac;
-    width: 80%;
     height: 1rem;
     border-radius: 2rem; }
 
@@ -346,7 +348,16 @@ body {
     border-radius: 2rem;
     width: 100%;
     font-size: 1rem;
-    font-family: "Commissioner", sans-serif; }
+    font-family: "Commissioner", sans-serif;
+    font-weight: 700; }
+  .pledge__wrapper {
+    padding-top: 1rem; }
+
+@media screen and (min-width: 48rem) {
+  .stocks {
+    position: absolute;
+    top: 0;
+    right: 1rem; } }
 
 .attribution {
   font-family: "Commissioner", sans-serif, sans-serif;

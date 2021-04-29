@@ -31,11 +31,13 @@
     }
 
     &--primary-centered {
-        @extend .button--primary;
-        flex: none;
-        padding: 1rem 1.5rem;
-        display: block;
+        @extend .button--primary-no-flex;
         margin: 0 auto;
+    }
+
+    &--primary-margin-top {
+        @extend .button--primary-no-flex;
+        margin-top: 1rem;
     }
 
     &--bookmark {

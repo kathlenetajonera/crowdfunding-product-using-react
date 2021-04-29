@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header className="header">
             <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-            <Overlay isActive={isMenuOpen} setIsActive={setIsMenuOpen} />
+            <Overlay type="gradient" isActive={isMenuOpen} setIsActive={setIsMenuOpen} />
         </header>
     );
 }

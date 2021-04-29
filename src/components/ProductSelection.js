@@ -1,11 +1,10 @@
 import { useMemo } from "react";
 import useProducts from "../hooks/useProducts";
-import Overlay from "./Overlay";
 import ProductSelectionCard from "./ProductSelectionCard";
 import Container from "./wrapper/Container";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const ProductSelection = ({ setIsModalOpen }) => {
+const ProductSelection = ({ selectedReward, setIsModalOpen }) => {
     const { products } = useProducts();
     const productSelectionCards = useMemo(() => (
         products && products.map(product => (
@@ -19,15 +18,14 @@ const ProductSelection = ({ setIsModalOpen }) => {
         ))
     ), [products]);
 
-    const handleClose = () => setIsModalOpen(false);
+    const handleClose = () => setIsModalOpen({ name: selectedReward, isOpen: false });
 
     return (
-        <>
         <Container>
             <FlexWrapper type="sb-c">
-                <h3 className="container__main-text container__main-text--card">
+                <h2 className="container__main-text">
                     Back this project
-                </h3>
+                </h2>
 
                 <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
                     <path 
@@ -43,9 +41,6 @@ const ProductSelection = ({ setIsModalOpen }) => {
 
             { productSelectionCards }
         </Container>
-
-        <Overlay />
-        </>
     );
 }
  

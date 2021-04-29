@@ -24,9 +24,16 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient($black 20%, $white);
     opacity: .7;
     z-index: 1;
+
+    &--gradient {
+        background: linear-gradient($black 20%, $white);
+    }
+
+    &--normal {
+        background-color: $black;
+    }
 }
 
 .main {
@@ -147,7 +154,6 @@ body {
     &__progress {
         position: absolute;
         background-color: $moderateCyan;
-        width: 80%;
         height: 1rem;
         border-radius: 2rem;
     }
@@ -213,6 +219,19 @@ body {
         width: 100%;
         font-size: 1rem;
         font-family: $fontFamily;
+        font-weight: 700;
+    }
+
+    &__wrapper {
+        padding-top: 1rem;
+    }
+}
+
+.stocks {
+    @include media-query(tablet) {
+        position: absolute;
+        top: 0;
+        right: 1rem;
     }
 }
 

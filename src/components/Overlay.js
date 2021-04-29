@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Overlay = ({ isActive, setIsActive }) => {
+const Overlay = ({ type, isActive, setIsActive }) => {
     const overlayRef = useRef();
 
     useEffect(() => {
@@ -19,7 +19,7 @@ const Overlay = ({ isActive, setIsActive }) => {
         <>
             {
                 isActive &&
-                <div className="overlay" ref={overlayRef} />
+                <div className={`overlay overlay--${type}`} ref={overlayRef} />
             }
         </>
     );

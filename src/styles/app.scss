@@ -38,7 +38,7 @@ body {
 
 .main {
     background-color: $lightGray;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 18.75rem);
     padding: 1.5rem;
 
     &__inner {
@@ -169,14 +169,20 @@ body {
         padding: 5px;
         margin-right: 1rem;
 
-        &--active {
-            &::after {
-                content: "";
+        &::after {
+            content: "";
                 width: 100%;
                 height: 100%;
                 display: block;
                 background: $moderateCyan;
                 border-radius: 50%;
+                transform: scale(0);
+                transition: .2s ease;
+        }
+
+        &--active {
+            &::after {
+                transform: scale(1);
             }
         }
     }

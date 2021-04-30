@@ -10,11 +10,12 @@ const PledgeInput = ({ minPledge }) => {
     const { setTotalPledge, setTotalBackers } = useContext(FundingSummaryContext);
     const fieldRef = useRef();
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         if (pledgeValue >= minPledge) {
+            e.stopPropagation();
             setTotalPledge(current => current + pledgeValue);
             setTotalBackers(current => current + 1);
-            setIsModalOpen({ name: "completed", isOpen: true })
+            setIsModalOpen({ name: "completed", isOpen: true });
         }
     }
 

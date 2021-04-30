@@ -8,13 +8,14 @@ import FlexWrapper from "./wrapper/FlexWrapper";
 const ProductSelectionCard = ({ productName, minPledge, productDesc, stocks }) => {
     const { selectedReward, setIsModalOpen, handleClick } = useContext(ProductSelectionContext);
     const { setTotalBackers } = useContext(FundingSummaryContext);
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.stopPropagation();
         setTotalBackers(current => current + 1);
         setIsModalOpen({ name: "completed", isOpen: true });
     };
     const isUnavailable = stocks === 0;
     const isSelected = productName === selectedReward; 
-
+    
     return (
         <div 
             className={`container__card ${

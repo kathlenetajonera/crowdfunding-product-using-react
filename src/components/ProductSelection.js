@@ -1,24 +1,14 @@
-import { useMemo } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductSelectionCard from "./ProductSelectionCard";
 import Container from "./wrapper/Container";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const ProductSelection = ({ selectedReward, setIsModalOpen }) => {
+const ProductSelection = ({ setIsModalOpen }) => {
     const { products } = useProducts();
-    const productSelectionCards = useMemo(() => (
-        products && products.map(product => (
-            <ProductSelectionCard 
-                productName={product.name}
-                minPledge={product.minPledge}
-                productDesc={product.description}
-                stocks={product.stocks}
-                key={product.id}
-            />
-        ))
-    ), [products]);
 
-    const handleClose = () => setIsModalOpen({ name: selectedReward, isOpen: false });
+    const handleClose = () => {
+        setIsModalOpen({ name: "product selection", isOpen: false });
+    };
 
     return (
         <Container>
@@ -39,7 +29,17 @@ const ProductSelection = ({ selectedReward, setIsModalOpen }) => {
             Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
             </p>
 
-            { productSelectionCards }
+            { 
+            products && products.map(product => (
+                <ProductSelectionCard 
+                    productName={product.name}
+                    minPledge={product.minPledge}
+                    productDesc={product.description}
+                    stocks={product.stocks}
+                    key={product.id}
+                />
+            )) 
+            }
         </Container>
     );
 }

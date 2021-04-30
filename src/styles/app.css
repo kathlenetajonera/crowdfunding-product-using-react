@@ -83,7 +83,7 @@
   padding: 2rem;
   font-family: "Commissioner", sans-serif;
   border-radius: .5rem;
-  width: Min(720px, 100%);
+  width: Min(45rem, 100%);
   margin: 0 auto;
   box-shadow: 0 0 5px 0 #f2f2f2; }
   .container:not(:last-child) {
@@ -120,9 +120,11 @@
     @media screen and (min-width: 48rem) {
       .container__body-text {
         font-size: 1rem; } }
-    @media screen and (min-width: 48rem) {
-      .container__body-text--product-desc {
-        margin: 1rem 0 2rem; } }
+    .container__body-text--product-desc {
+      text-align: center; }
+      @media screen and (min-width: 48rem) {
+        .container__body-text--product-desc {
+          margin: 1rem 0 2rem; } }
     .container__body-text--centered {
       text-align: center; }
     .container__body-text--pledge {
@@ -196,6 +198,38 @@
   transform: translateX(-50%);
   width: Min(720px, 90%);
   z-index: 999; }
+  .modal-enter {
+    opacity: 0;
+    transform: translate(-50%, 20px); }
+  .modal-enter-active {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition: opacity 200ms, transform 200ms; }
+  .modal-exit {
+    opacity: 1;
+    transform: translate(-50%, 0); }
+  .modal-exit-active {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+    transition: opacity 200ms, transform 200ms; }
+  .modal--completed {
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+    .modal--completed-enter {
+      opacity: 0;
+      transform: translate(-50%, -35%); }
+    .modal--completed-enter-active {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      transition: opacity 200ms, transform 200ms; }
+    .modal--completed-exit {
+      opacity: 1;
+      transform: translate(-50%, -50%); }
+    .modal--completed-exit-active {
+      opacity: 0;
+      transform: translate(-50%, -35%);
+      transition: opacity 200ms, transform 200ms; }
 
 html {
   box-sizing: border-box; }
@@ -222,7 +256,7 @@ body {
 
 .main {
   background-color: #fafafa;
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 18.75rem);
   padding: 1.5rem; }
   .main__inner {
     transform: translateY(-100px); }
@@ -311,13 +345,17 @@ body {
   border-radius: 50%;
   padding: 5px;
   margin-right: 1rem; }
-  .radio__custom--active::after {
+  .radio__custom::after {
     content: "";
     width: 100%;
     height: 100%;
     display: block;
     background: #3cb4ac;
-    border-radius: 50%; }
+    border-radius: 50%;
+    transform: scale(0);
+    transition: .2s ease; }
+  .radio__custom--active::after {
+    transform: scale(1); }
 
 .pledge {
   padding-top: 1.5rem; }

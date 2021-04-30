@@ -5,10 +5,11 @@ import FlexWrapper from "./wrapper/FlexWrapper";
 
 const ProductCard = ({ productName, minPledge, productDesc, stocks }) => {
     const { handleClick } = useContext(ProductSelectionContext);
+    const isUnavailable = stocks === 0;
 
     return (
         <div 
-            className={`container__card ${stocks === 0 ? 'container__card--unavailable' : ''}`}
+            className={`container__card ${ isUnavailable && 'container__card--unavailable' }`}
             data-reward={productName}
         >
             <FlexWrapper type="col-mb">
@@ -36,8 +37,8 @@ const ProductCard = ({ productName, minPledge, productDesc, stocks }) => {
                 </FlexWrapper>
 
                 <Button 
-                    type={`${stocks !== 0 ? 'primary' : 'unavailable'}`}
-                    label={`${stocks !== 0 ? 'Select Reward' : 'Out of Stock'}`}
+                    type={`${ !isUnavailable ? 'primary' : 'unavailable'}`}
+                    label={`${ !isUnavailable ? 'Select Reward' : 'Out of Stock'}`}
                     handleClick={handleClick}
                 />
             </FlexWrapper>

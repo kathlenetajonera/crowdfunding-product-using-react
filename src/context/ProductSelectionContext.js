@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export const ProductSelectionContext = React.createContext();
 
@@ -10,15 +10,8 @@ export const ProductSelectionProvider = ({ children }) => {
         const selectedProduct = e.target.closest(".container__card").dataset.reward;
 
         setSelectedReward(selectedProduct)
+        setIsModalOpen({ name: "product selection", isOpen: true })
     }
-
-    useEffect(() => {
-        if (selectedReward) setIsModalOpen({ name: "product selection", isOpen: true });
-    }, [selectedReward])
-
-    useEffect(() => {
-        !isModalOpen && setSelectedReward(null);
-    }, [isModalOpen])
 
     return (
         <ProductSelectionContext.Provider 

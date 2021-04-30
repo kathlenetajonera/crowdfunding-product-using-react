@@ -5,8 +5,11 @@ import { useContext } from "react";
 import { ProductSelectionContext } from "../context/ProductSelectionContext";
 
 const CompletedPledge = () => {
-    const { setIsModalOpen } = useContext(ProductSelectionContext);
-    const handleClose = () => setIsModalOpen(false);
+    const { setIsModalOpen, setSelectedReward } = useContext(ProductSelectionContext);
+    const handleClose = () => {
+        setIsModalOpen(false);
+        setSelectedReward(null);
+    };
 
     return (
         <Container>

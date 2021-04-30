@@ -14,7 +14,7 @@ const Product = ({ setIsModalOpen }) => {
                 Mastercraft Bamboo Monitor Riser
             </h1>
 
-            <p className="container__body-text container__body-text--product-desc container__body-text--centered">
+            <p className="container__body-text container__body-text--product-desc">
                 A beautiful & handcrafted monitor stand to reduce neck and eye strain.
             </p>
 

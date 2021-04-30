@@ -1,16 +1,19 @@
-import { useContext } from "react";
+import React, { useContext, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 import { ProductSelectionContext } from "../context/ProductSelectionContext";
+import { FundingSummaryContext } from "../context/FundingSummaryContext";
 import CrowdFundingSummary from "./CrowdFundSummary";
 import Product from "./Product";
 import ProductDetails from "./ProductDetails";
 import Modal from "./wrapper/Modal";
 import ProductSelection from "./ProductSelection";
 import CompletedPledge from "./CompletedPledge";
-import { FundingSummaryContext } from "../context/FundingSummaryContext";
 
 const Main = () => {
-    const { selectedReward, isModalOpen, setIsModalOpen } = useContext(ProductSelectionContext);
+    const { isModalOpen, setIsModalOpen } = useContext(ProductSelectionContext);
     const { totalPledge, totalBackers } = useContext(FundingSummaryContext);
+    const selectionRef = useRef();
+    const completedRef = useRef();
 
     return (
         <div className="main">
@@ -25,20 +28,41 @@ const Main = () => {
                 <ProductDetails />
             </div>
 
-            { isModalOpen.name === "product selection" &&
-                <Modal selectedReward={selectedReward} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+            <CSSTransition
+                nodeRef={selectionRef}
+                in={isModalOpen.isOpen && isModalOpen.name === "product selection"}
+                timeout={200}
+                classNames="modal"
+                unmountOnExit
+            >
+                <Modal 
+                    ref={selectionRef}
+                    isModalOpen={isModalOpen} 
+                    setIsModalOpen={setIsModalOpen}
+                >
                     <ProductSelection 
-                        selectedReward={selectedReward}
                         setIsModalOpen={setIsModalOpen}
-                    />
+                    /> 
                 </Modal>
-            }
+            </CSSTransition>
 
-            { isModalOpen.name === "completed" &&
-                <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+            <CSSTransition
+                nodeRef={completedRef}
+                in={isModalOpen.isOpen && isModalOpen.name === "completed"}
+                timeout={200}
+                classNames="modal--completed"
+                unmountOnExit
+            >
+                <Modal 
+                    ref={completedRef}
+                    isModalOpen={isModalOpen} 
+                    setIsModalOpen={setIsModalOpen}
+                    type="completed"
+                >
                     <CompletedPledge />
                 </Modal>
-            }
+            </CSSTransition>
+            
         </div>
     );
 };

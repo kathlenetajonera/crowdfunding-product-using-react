@@ -1,10 +1,10 @@
-import { useMemo } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
     const { products } = useProducts("productsOnly");
-    const productCards = useMemo(() => (
+
+    return (
         products && products.map(product => (
             <ProductCard 
                 productName={product.name}
@@ -14,12 +14,6 @@ const ProductList = () => {
                 key={product.id}
             />
         ))
-    ), [products]);
-
-    return (
-        <>
-            { productCards }
-        </>
     );
 }
  

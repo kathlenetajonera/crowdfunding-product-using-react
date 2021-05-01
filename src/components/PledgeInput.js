@@ -6,6 +6,7 @@ import FlexWrapper from "./wrapper/FlexWrapper";
 
 const PledgeInput = ({ minPledge }) => {
     const [pledgeValue, setPledgeValue] = useState(null);
+    const [isInvalid, setIsInvalid] = useState(false);
     const { setIsModalOpen } = useContext(ProductSelectionContext);
     const { setTotalPledge, setTotalBackers } = useContext(FundingSummaryContext);
     const fieldRef = useRef();
@@ -16,7 +17,7 @@ const PledgeInput = ({ minPledge }) => {
             setTotalPledge(current => current + pledgeValue);
             setTotalBackers(current => current + 1);
             setIsModalOpen({ name: "completed", isOpen: true });
-        }
+        } else setIsInvalid(true)
     }
 
     const handleClick = () => fieldRef.current.focus();
@@ -36,7 +37,7 @@ const PledgeInput = ({ minPledge }) => {
                         <span className="pledge__currency">$</span>
                         <input 
                             type="text" 
-                            className="pledge__field"
+                            className={`pledge__field ${isInvalid && `pledge__field--invalid`}`}
                             onChange={e => setPledgeValue(parseInt(e.target.value))}
                             ref={fieldRef}
                         />

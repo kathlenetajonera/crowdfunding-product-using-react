@@ -1,20 +1,36 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { animateScroll as scroller } from "react-scroll";
 import { FundingSummaryContext } from "../context/FundingSummaryContext";
 import { ProductSelectionContext } from "../context/ProductSelectionContext";
 import Button from "./Button";
 import PledgeInput from "./PledgeInput";
 import FlexWrapper from "./wrapper/FlexWrapper";
 
-const ProductSelectionCard = ({ productName, minPledge, productDesc, stocks }) => {
+const ProductSelectionCard = ({ productName, minPledge, productDesc, stocks, listRef }) => {
+    const [cardPosition, setCardPosition] = useState(null);
     const { selectedReward, setIsModalOpen, handleClick } = useContext(ProductSelectionContext);
     const { setTotalBackers } = useContext(FundingSummaryContext);
+    const isUnavailable = stocks === 0;
+    const isSelected = productName === selectedReward; 
     const handleSubmit = (e) => {
         e.stopPropagation();
         setTotalBackers(current => current + 1);
         setIsModalOpen({ name: "completed", isOpen: true });
     };
-    const isUnavailable = stocks === 0;
-    const isSelected = productName === selectedReward; 
+
+    useEffect(() => {
+        if (selectedReward) {
+            const listItems = listRef.current.children;
+            const selectedCard = [...listItems].find(item => item.classList.contains("container__card--selected"))
+            const currentPosition = (selectedCard.getBoundingClientRect().top + window.pageYOffset) - 100;
+
+            setCardPosition(currentPosition);
+        }
+    }, [selectedReward, listRef])
+
+    useEffect(() => {
+        scroller.scrollTo(cardPosition)
+    }, [cardPosition])
     
     return (
         <div 

@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductSelectionCard from "./ProductSelectionCard";
 import Container from "./wrapper/Container";
@@ -5,6 +6,7 @@ import FlexWrapper from "./wrapper/FlexWrapper";
 
 const ProductSelection = ({ setIsModalOpen }) => {
     const { products } = useProducts();
+    const listRef = useRef();
 
     const handleClose = () => {
         setIsModalOpen({ name: "product selection", isOpen: false });
@@ -29,17 +31,20 @@ const ProductSelection = ({ setIsModalOpen }) => {
             Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
             </p>
 
-            { 
-            products && products.map(product => (
-                <ProductSelectionCard 
-                    productName={product.name}
-                    minPledge={product.minPledge}
-                    productDesc={product.description}
-                    stocks={product.stocks}
-                    key={product.id}
-                />
-            )) 
-            }
+            <div ref={listRef}>
+                { 
+                products && products.map(product => (
+                    <ProductSelectionCard 
+                        productName={product.name}
+                        minPledge={product.minPledge}
+                        productDesc={product.description}
+                        stocks={product.stocks}
+                        listRef={listRef}
+                        key={product.id}
+                    />
+                )) 
+                }
+            </div>
         </Container>
     );
 }
